@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ asset('fonts/material-design-iconic-font.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <meta name="robots" content="noindex, follow">
 </head>
 
@@ -25,6 +30,25 @@
                                 placeholder="Your Name" />
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-input" name="phone" id="phone"
+                                placeholder="Phone Number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Gender</label> <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="male" checked>
+                                <label class="form-check-label" for="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="female">
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <input type="email" class="form-input" name="email" id="email"
                                 placeholder="Your Email" />
                         </div>
@@ -34,14 +58,30 @@
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password"
-                                placeholder="Repeat your password" />
+                            <input type="text" class="form-input" name="address" id="address"
+                                placeholder="Address" />
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
-                                statements in <a href="#" class="term-service">Terms of service</a></label>
+                            <label for="">Birthdate</label>
+                            <input type="date" class="form-input" name="birthdate" id="birthdate"/>
                         </div>
+                        <div class="form-group">
+                            <label for="role">Role</label> <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="role" id="user" checked>
+                                <label class="form-check-label" for="user">
+                                    User
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="role" id="admin">
+                                <label class="form-check-label" for="admin">
+                                    Admin
+                                </label>
+                            </div>
+                       </div>
+
+
                         <div class="form-group">
                             <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
                         </div>
