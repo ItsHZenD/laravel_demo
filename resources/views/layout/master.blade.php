@@ -1,5 +1,5 @@
-<html lang="en" data-theme="dark" data-layout-mode="fluid" data-menu-color="dark" data-topbar-color="light"
-    data-layout-position="fixed" data-sidenav-size="default" class="menuitem-active sidebar-enable">
+<html lang="en" data-theme="light" data-layout-mode="fluid" data-menu-color="dark" data-topbar-color="light"
+    data-layout-position="fixed" data-sidenav-size="default" class="menuitem-active">
 
 <head>
     <meta charset="utf-8">
@@ -8,38 +8,29 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <!-- Daterangepicker css -->
-    <link rel="stylesheet" href="{{ asset('css/layout/daterangepicker.css') }}">
-
-    <!-- Vector Map css -->
-    <link rel="stylesheet" href="{{ asset('css/layout/jquery-jvectormap-1.2.2.css') }}">
-
     <!-- Theme Config Js -->
-    <script src="{{ asset('js/layout/hyper-config.js') }}"></script>
+    {{-- <script src="{{ asset(js/hyper-config.js) }}"></script> --}}
+    {{-- <script src="assets/js/hyper-config.js"></script> --}}
+
 
     <!-- App css -->
-    <link href="{{ asset('css/layout/app-saas.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+    {{-- <link href="assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style"> --}}
+    <link rel="stylesheet" href="{{ asset('css/layout/app-saas.min.css') }}">
 
     <!-- Icons css -->
-    <link href="{{ asset('css/layout/icons.min.css') }}" rel="stylesheet" type="text/css">
+    {{-- <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"> --}}
+    <link rel="stylesheet" href="{{ asset('css/layout/icons.min.css') }}">
 
-    <link href="{{ asset('css/layout/main-style.css') }}" rel="stylesheet" type="text/css">
 </head>
 
-<body class="show">
+<body class="show" style="padding: 0 !important">
     <!-- Begin page -->
     <div class="wrapper">
-
+        @include('layout.topbar')
 
         <!-- ========== Topbar Start ========== -->
-        @include('layout.topbar')
         <!-- ========== Topbar End ========== -->
 
         <!-- ========== Left Sidebar Start ========== -->
@@ -52,14 +43,24 @@
         <!-- ============================================================== -->
 
         <div class="content-page">
-            @yield('content')
-            <!-- content -->
+            <div class="content">
 
-            <!-- Footer Start -->
-            @include('layout.footer')
-            <!-- end Footer -->
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">
 
-        </div>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    @yield('content')
+                </div>
+                <!-- container -->
+
+            </div>
 
         <!-- ============================================================== -->
         <!-- End Page content -->
@@ -69,12 +70,19 @@
     <!-- END wrapper -->
 
     <!-- Theme Settings -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-settings-offcanvas">
+        <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+            <h5 class="text-white m-0">Theme Settings</h5>
+            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
 
     <!-- Vendor js -->
+    {{-- <script src="assets/js/vendor.min.js"></script> --}}
     <script src="{{ asset('js/layout/vendor.min.js') }}"></script>
 
     <!-- Daterangepicker js -->
     <script src="{{ asset('js/layout/moment.min.js') }}"></script>
+
     <script src="{{ asset('js/layout/daterangepicker.js') }}"></script>
 
     <!-- Apex Charts js -->
@@ -98,21 +106,6 @@
         <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
         <path id="SvgjsPath1004" d="M0 0 "></path>
     </svg>
-    <div class="daterangepicker ltr single opensright">
-        <div class="ranges"></div>
-        <div class="drp-calendar left single" style="display: block;">
-            <div class="calendar-table"></div>
-            <div class="calendar-time" style="display: none;"></div>
-        </div>
-        <div class="drp-calendar right" style="display: none;">
-            <div class="calendar-table"></div>
-            <div class="calendar-time" style="display: none;"></div>
-        </div>
-        <div class="drp-buttons"><span class="drp-selected"></span><button class="cancelBtn btn btn-sm btn-default"
-                type="button">Cancel</button><button class="applyBtn btn btn-sm btn-primary" disabled="disabled"
-                type="button">Apply</button> </div>
-    </div>
-    <div class="jvectormap-label"></div>
 </body>
 
 </html>

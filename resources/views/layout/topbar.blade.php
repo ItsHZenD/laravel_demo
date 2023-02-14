@@ -109,18 +109,7 @@
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
-            <li class="dropdown d-lg-none">
-                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="ri-search-line font-22"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                    <form class="p-3">
-                        <input type="search" class="form-control" placeholder="Search ..."
-                            aria-label="Recipient's username">
-                    </form>
-                </div>
-            </li>
+
 
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#"
@@ -130,7 +119,7 @@
                     <span class="align-middle d-none d-lg-inline-block">English</span> <i
                         class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" style="">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
@@ -165,7 +154,8 @@
                     <i class="ri-notification-3-line font-22"></i>
                     <span class="noti-icon-badge"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0"
+                    style="">
                     <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
                         <div class="row align-items-center">
                             <div class="col">
@@ -330,7 +320,9 @@
                             <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
                         </div>
                         <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-                            <div class="simplebar-scrollbar" style="height: 0px; display: none;"></div>
+                            <div class="simplebar-scrollbar"
+                                style="height: 0px; display: none; transform: translate3d(0px, 0px, 0px);">
+                            </div>
                         </div>
                     </div>
 
@@ -342,20 +334,12 @@
 
                 </div>
             </li>
-
-
-
-            <li class="d-none d-sm-inline-block">
-                <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
-                    <i class="ri-settings-3-line font-22"></i>
-                </a>
+          <li class="d-none d-sm-inline-block">
+                <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left"
+                    aria-label="Theme Mode" data-bs-original-title="Theme Mode">
+                    <i class="ri-moon-line font-22"></i>
+                </div>
             </li>
-
-
-
-
-
-
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -388,10 +372,16 @@
                     </a>
 
                     <!-- item-->
-
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="mdi mdi-lifebuoy me-1"></i>
+                        <span>Support</span>
+                    </a>
 
                     <!-- item-->
-
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="mdi mdi-lock-outline me-1"></i>
+                        <span>Lock Screen</span>
+                    </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">

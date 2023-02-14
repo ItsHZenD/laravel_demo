@@ -40,7 +40,7 @@
             <div class="simplebar-mask">
                 <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
                     <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
-                        style="height: 100%; overflow: scroll hidden;">
+                        style="height: 100%; overflow: hidden;">
                         <div class="simplebar-content" style="padding: 0px;">
                             <!-- Leftbar User -->
                             <div class="leftbar-user">
@@ -61,32 +61,26 @@
                                         aria-controls="sidebarDashboards" class="side-nav-link">
                                         <i class="uil-home-alt"></i>
                                         <span class="badge bg-success float-end">5</span>
-                                        <span> Quản Lý </span>
+                                        <span> Dashboards </span>
                                     </a>
                                     <div class="collapse show" id="sidebarDashboards">
                                         <ul class="side-nav-second-level">
-                                            <li>
-                                                <a href="dashboard-analytics.html">Quản lý sách</a>
-                                            </li>
-                                            <li class="menuitem-active">
-                                                <a href="index.html" class="active">Quản lý người dùng</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </li>
                             </ul>
                             <!--- End Sidemenu -->
 
-                            <div class="clearfix"></div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="simplebar-placeholder" style="width: auto; height: 116px;"></div>
+            <div class="simplebar-placeholder" style="width: auto; height: 109px;"></div>
         </div>
-        <div class="simplebar-track simplebar-horizontal" style="visibility: visible;">
-            <div class="simplebar-scrollbar"
-                style="width: 33px; display: block; transform: translate3d(0px, 0px, 0px);"></div>
+        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="width: 0px; display: none; transform: translate3d(0px, 0px, 0px);">
+            </div>
         </div>
         <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
             <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
