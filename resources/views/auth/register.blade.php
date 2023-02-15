@@ -36,13 +36,13 @@
                         <div class="form-group">
                             <label for="role">Gender</label> <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="male" checked>
+                                <input class="form-check-input" type="radio" name="gender" value="1" checked>
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="female">
+                                <input class="form-check-input" type="radio" name="gender" value="0">
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>
@@ -68,13 +68,13 @@
                         <div class="form-group">
                             <label for="role">Role</label> <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="role" id="user" checked>
+                                <input class="form-check-input" type="radio" name="role" value="0" checked>
                                 <label class="form-check-label" for="user">
                                     User
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="role" id="admin">
+                                <input class="form-check-input" type="radio" name="role" value="1">
                                 <label class="form-check-label" for="admin">
                                     Admin
                                 </label>

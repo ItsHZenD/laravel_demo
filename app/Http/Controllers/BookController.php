@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBookRequest;
-use App\Http\Requests\UpdateBookRequest;
+use App\Http\Requests\Book\DestroyRequest;
+use App\Http\Requests\Book\StoreRequest;
+use App\Http\Requests\Book\UpdateRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = Book::get();
+        $search = $request->get('q');
+
+        $data = Book::query()
+            ->where('name', 'like', '%'. $search . '%')
+            ->paginate(2);
+        
+        $data->appends(['q'=> $search]);
 
         return view('books.index',[
             'data' => $data,
+            'search' => $search,
         ]);
     }
 
@@ -30,7 +38,7 @@ class BookController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $object = new Book();
         $object->fill($request->except('_token'));
@@ -60,7 +68,7 @@ class BookController extends Controller
     }
 
 
-    public function update(Request $request, Book $book)
+    public function update(UpdateRequest $request, Book $book)
     {
         $book->update($request->except([
             '_token',
@@ -74,8 +82,8 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
-        // Book::destroy($book->id);
         $book->delete();
+        // Book::destroy($book->id);
         return redirect()->route('books.index');
     }
 }

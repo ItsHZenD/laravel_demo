@@ -348,8 +348,8 @@
                             class="rounded-circle">
                     </span>
                     <span class="d-lg-flex flex-column gap-1 d-none">
-                        <h5 class="my-0">Dominic Keller</h5>
-                        <h6 class="my-0 fw-normal">Founder</h6>
+                        <h5 class="my-0">{{ session()->get('name') }}</h5>
+                        <h6 class="my-0 fw-normal">Role: {{ session()->get('level') ? 'Admin' : 'User' }}</h6>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown"

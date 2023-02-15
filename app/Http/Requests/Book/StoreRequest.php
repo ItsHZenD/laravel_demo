@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateBookRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateBookRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class UpdateBookRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => [
+                'bail',
+                'required',
+                'string',
+                'unique:App\Models\Book,name',
+            ],
+            'author' => [
+                'bail',
+                'required',
+                'string',
+            ],
+
         ];
     }
 }
