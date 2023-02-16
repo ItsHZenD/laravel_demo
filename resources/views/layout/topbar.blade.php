@@ -335,10 +335,7 @@
                 </div>
             </li>
           <li class="d-none d-sm-inline-block">
-                <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left"
-                    aria-label="Theme Mode" data-bs-original-title="Theme Mode">
-                    <i class="ri-moon-line font-22"></i>
-                </div>
+            <a href="{{ route('logout') }}" class="btn btn-warning">Đăng Xuất</a>
             </li>
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown"

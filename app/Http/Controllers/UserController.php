@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegisteredEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
         $users = User::query()
             ->where('name', 'like', '%'. $search . '%')
             ->paginate(5);
-        
+
         $users->appends(['q'=> $search]);
 
         return view('users.index',[
@@ -34,17 +36,31 @@ class UserController extends Controller
     }
 
 
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        $object = new User();
-        $object->fill($request->except('_token'));
-        $object->save();
+        // $object = new User();
+        // $object->fill([
+        //     'password' => Hash::make($request->get('password'))
+        // ]);
+        // // $object->fill($request->except('_token'));
+        // $object->save();
 
+        $user = User::query()
+            ->create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' =>Hash::make( $request->get('password')),
+                'level' => $request->get('level'),
+                'phone' => $request->get('phone'),
+                'address' => $request->get('address'),
+                'gender' => $request->get('gender'),
+                'birthdate' => $request->get('birthdate'),
+            ]);
         // Book::create($request->except('_token'));
         return redirect()->route('users.index');
     }
 
-    
+
     public function show(User $user)
     {
         //
@@ -59,7 +75,7 @@ class UserController extends Controller
     }
 
 
-    public function update(UpdateRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         $user->update($request->except([
             '_token',
@@ -76,5 +92,20 @@ class UserController extends Controller
         $user->delete();
         // Book::destroy($user->id);
         return redirect()->route('users.index');
+    }
+
+    public function processRegister(Request $request){
+        $user = User::query()
+            ->create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' =>Hash::make( $request->get('password')),
+                'level' => $request->get('level'),
+                'phone' => $request->get('phone'),
+                'address' => $request->get('address'),
+                'gender' => $request->get('gender'),
+                'birthdate' => $request->get('birthdate'),
+            ]);
+
     }
 }

@@ -57,12 +57,12 @@
                                 <li class="side-nav-title">Navigation</li>
 
                                 <li class="side-nav-item menuitem-active">
-                                    <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false"
-                                        aria-controls="sidebarDashboards" class="side-nav-link">
-                                        <i class="uil-home-alt"></i>
-                                        <span class="badge bg-success float-end">5</span>
-                                        <span> Dashboards </span>
-                                    </a>
+                                    <div>
+                                        <a class="btn btn-info" href="{{ route('books.index') }}">Books</a>
+                                    </div>
+                                   <div class="">
+                                    <a  class="btn btn-info" href="{{ route('users.index') }}">Users</a>
+                                   </div>
                                     <div class="collapse show" id="sidebarDashboards">
                                         <ul class="side-nav-second-level">
                                         </ul>

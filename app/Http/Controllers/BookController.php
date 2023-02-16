@@ -13,17 +13,36 @@ class BookController extends Controller
 
     public function index(Request $request)
     {
-        $search = $request->get('q');
+        // $search = $request->get('q');
 
-        $data = Book::query()
-            ->where('name', 'like', '%'. $search . '%')
+
+        // $data = Book::query()
+        //     ->where('name', 'like', '%'. $search . '%')
+        //     ->paginate(2);
+
+        // $data->appends(['q'=> $search]);
+
+        $search_name = $request->get('q_name');
+        $search_author = $request->get('q_author');
+
+         $data = Book::query()
+            ->when($request->has('q_name'), function($q){
+                return $q->where('name', 'like', '%'. request('q_name') . '%');
+            })
+            ->when($request->has('q_author'), function($q){
+                return $q->where('author','like', '%' . request('q_author') . '%');
+            })
             ->paginate(2);
-        
-        $data->appends(['q'=> $search]);
+
+        $data->appends([
+            'q_name'=> $search_name,
+            'q_author' => $search_author,
+        ]);
 
         return view('books.index',[
             'data' => $data,
-            'search' => $search,
+            'search_name' => $search_name,
+            'search_author' => $search_author,
         ]);
     }
 
@@ -42,6 +61,7 @@ class BookController extends Controller
     {
         $object = new Book();
         $object->fill($request->except('_token'));
+        // dd($object);
         $object->save();
 
         // Book::create($request->except('_token'));

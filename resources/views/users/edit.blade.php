@@ -17,23 +17,21 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('users.store') }}" method="post">
+    <form action="{{ route('users.update', $user) }}" method="post">
         @csrf
-        <h2 class="form-title">Create user</h2>
+        @method('PUT')
+        <h2 class="form-title">Edit user</h2>
         <div class="form-group">
-            <input type="text" class="form-input" name="name" placeholder="Your Name">
+            <input type="text" class="form-input" name="name" value="{{ $user->name }}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-input" name="email" placeholder="Email">
+            <input type="text" class="form-input" name="email" value="{{ $user->email }}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-input" name="phone" id="phone" placeholder="Phone Number" />
+            <input type="text" class="form-input" name="phone" id="phone" value="{{ $user->phone }}" />
         </div>
         <div class="form-group">
-            <input type="password" class="form-input" name="password" placeholder="Password" />
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-input" name="address" id="phone" placeholder="Address" />
+            <input type="text" class="form-input" name="address"  value="{{ $user->address }}" />
         </div>
         <div class="form-group">
             <label for="">Birthdate</label>
@@ -69,6 +67,6 @@
                 </label>
             </div>
         </div>
-        <button class="btn btn-success">Create</button>
+        <button class="btn btn-success">Update</button>
     </form>
 @endsection

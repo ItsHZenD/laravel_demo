@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
@@ -22,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->boolean('gender');
-            $table->date('birthdate');  
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('birthdate');
+            $table->timestamps();
         });
     }
 

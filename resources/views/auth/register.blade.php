@@ -20,10 +20,10 @@
 <body>
     <div class="main">
         <section class="signup">
-
             <div class="container">
                 <div class="signup-content">
-                    <form method="POST" id="signup-form" class="signup-form">
+                    <form method="POST" action="{{ route('process_register') }}">
+                        @csrf
                         <h2 class="form-title">Create account</h2>
                         <div class="form-group">
                             <input type="text" class="form-input" name="name" id="name"
@@ -53,7 +53,7 @@
                                 placeholder="Your Email" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password"
+                            <input type="password" class="form-input" name="password" id="password"
                                 placeholder="Password" />
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
@@ -63,28 +63,24 @@
                         </div>
                         <div class="form-group">
                             <label for="">Birthdate</label>
-                            <input type="date" class="form-input" name="birthdate" id="birthdate"/>
+                            <input type="date" class="form-input" name="birthdate" id="birthdate" />
                         </div>
                         <div class="form-group">
                             <label for="role">Role</label> <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="role" value="0" checked>
+                                <input class="form-check-input" type="radio" name="level" value="0" checked>
                                 <label class="form-check-label" for="user">
                                     User
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="role" value="1">
+                                <input class="form-check-input" type="radio" name="level" value="1">
                                 <label class="form-check-label" for="admin">
                                     Admin
                                 </label>
                             </div>
-                       </div>
-
-
-                        <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
                         </div>
+                        <button class="btn btn-success">Đăng ký</button>
                     </form>
                     <p class="loginhere">
                         Have already an account ? <a href="#" class="loginhere-link">Login here</a>

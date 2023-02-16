@@ -11,18 +11,17 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-
                 <div class="card-header">
                     <a href="{{ route('books.create') }}" class="btn btn-primary">
                         Thêm sách
                     </a>
                     <caption>
                         <form action="" class="form-group">
-                            Tìm sách: <input class="form-input" type="search" name="q" value="{{ $search }}">
+                            Tìm sách: <input class="form-input" type="search" name="q_name" value="{{ $search_name }}" >
                         </form>
-                        {{-- <form action="" class="form-group">
-                            Tìm tác giả: <input type="search" class="form-input" name="q_author">
-                        </form> --}}
+                        <form action="" class="form-group">
+                            Tìm tác giả: <input type="search" class="form-input" name="q_author" value="{{ $search_author }}">
+                        </form>
                     </caption>
                 </div>
                 @if ($errors->any())

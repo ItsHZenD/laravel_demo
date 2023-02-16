@@ -7,13 +7,16 @@ use App\Http\Middleware\CheckAdminMiddleware;
 use App\Http\Middleware\CheckLoginMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('', [AuthController::class, 'login'])->name('login'); 
-Route::post('login', [AuthController::class, 'processLogin'])->name('process_login'); 
+Route::get('', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'processLogin'])->name('process_login');
 
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'processRegister'])->name('process_register');
 
 Route::group([
     'middleware' => CheckLoginMiddleware::class,
 ], function(){
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('books', BookController::class)
     ->except(
         'show',
@@ -29,6 +32,7 @@ Route::group([
     'middleware' => CheckAdminMiddleware::class,
 ], function(){
     Route::delete('books/{book}',[BookController::class, 'destroy'])->name('books.destroy');
+    Route::delete('users/{user}',[UserController::class, 'destroy'])->name('users.destroy');
 });
 
 
