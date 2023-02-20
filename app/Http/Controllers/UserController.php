@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserRegisteredEvent;
+use App\Http\Requests\User\StoreRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +19,7 @@ class UserController extends Controller
             ->where('name', 'like', '%'. $search . '%')
             ->paginate(5);
 
-        $users->appends(['q'=> $search]);
+        // $users->appends(['q'=> $search]);
 
         return view('users.index',[
             'users' => $users,
@@ -36,27 +38,27 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        // $object = new User();
-        // $object->fill([
-        //     'password' => Hash::make($request->get('password'))
-        // ]);
-        // // $object->fill($request->except('_token'));
-        // $object->save();
+        $user = new User();
+        $user->fill($request->except(['_token', 'password']));
+        $user->fill([
+            'password' => Hash::make($request->get('password'))
+        ]);
+        $user->save();
 
-        $user = User::query()
-            ->create([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'password' =>Hash::make( $request->get('password')),
-                'level' => $request->get('level'),
-                'phone' => $request->get('phone'),
-                'address' => $request->get('address'),
-                'gender' => $request->get('gender'),
-                'birthdate' => $request->get('birthdate'),
-            ]);
-        // Book::create($request->except('_token'));
+        // $user = User::query()
+        //     ->create([
+        //         'name' => $request->get('name'),
+        //         'email' => $request->get('email'),
+        //         'password' =>Hash::make( $request->get('password')),
+        //         'level' => $request->get('level'),
+        //         'phone' => $request->get('phone'),
+        //         'address' => $request->get('address'),
+        //         'gender' => $request->get('gender'),
+        //         'birthdate' => $request->get('birthdate'),
+        //     ]);
+
         return redirect()->route('users.index');
     }
 
@@ -75,7 +77,7 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
         $user->update($request->except([
             '_token',
@@ -95,17 +97,23 @@ class UserController extends Controller
     }
 
     public function processRegister(Request $request){
-        $user = User::query()
-            ->create([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'password' =>Hash::make( $request->get('password')),
-                'level' => $request->get('level'),
-                'phone' => $request->get('phone'),
-                'address' => $request->get('address'),
-                'gender' => $request->get('gender'),
-                'birthdate' => $request->get('birthdate'),
-            ]);
+
+        $user = User::query()->create([
+            'password' =>Hash::make( $request->get('password')),
+            $request->except('_token'),
+        ]);
+
+        // $user = User::query()
+        //     ->create([
+        //         'name' => $request->get('name'),
+        //         'email' => $request->get('email'),
+        //         'password' =>Hash::make( $request->get('password')),
+        //         'level' => $request->get('level'),
+        //         'phone' => $request->get('phone'),
+        //         'address' => $request->get('address'),
+        //         'gender' => $request->get('gender'),
+        //         'birthdate' => $request->get('birthdate'),
+        //     ]);
 
     }
 }

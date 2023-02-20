@@ -19,4 +19,6 @@ class Book extends Model
     public function getYearCreatedAtAttribute($value){
         return  $this->created_at->format('d-m-Y');
     }
+
+
 }

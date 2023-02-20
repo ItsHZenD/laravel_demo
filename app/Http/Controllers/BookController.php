@@ -34,10 +34,10 @@ class BookController extends Controller
             })
             ->paginate(2);
 
-        $data->appends([
-            'q_name'=> $search_name,
-            'q_author' => $search_author,
-        ]);
+        // $data->appends([
+        //     'q_name'=> $search_name,
+        //     'q_author' => $search_author,
+        // ]);
 
         return view('books.index',[
             'data' => $data,

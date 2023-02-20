@@ -75,7 +75,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    {{ $users->links() }}
+                    {{ $users->withQueryString()->links() }}
                 </div>
             </div>
         </div>

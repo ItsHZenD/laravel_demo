@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\Auth\ProcessRegisterRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,8 +21,7 @@ class AuthController extends Controller
     {
 
         try {
-            $user = User::query()
-                ->where('email', $request->get('email'))
+            $user = User::where('email', $request->get('email'))
                     // ->where('password', $request->get('password'))
                 ->firstOrFail();
             if (!Hash::check($request->get('password'), $user->password)) {
@@ -50,11 +51,9 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
-    public function processRegister(Request $request)
+    public function processRegister(ProcessRegisterRequest $request)
     {
         $user = new User();
-
-
         $user->fill($request->except([
             '_token',
             'password',
@@ -62,9 +61,8 @@ class AuthController extends Controller
         $user->fill([
             'password' => Hash::make($request->get('password'))
         ]);
-
         $user->save();
-        // dd($user);
+
 
         // $user = User::query()
         //     ->create([
@@ -77,7 +75,18 @@ class AuthController extends Controller
         //         'gender' => $request->get('gender'),
         //         'birthdate' => $request->get('birthdate'),
         //     ]);
-        // Book::create($request->except('_token'));
+        // dd($request->all());
+
+        // $user = User::query()->create([
+            // $request->except([
+            //     '_token',
+            //     'password',
+            // ]),
+            // 'password' => Hash::make($request->get('password')),
+        // ]);
+        // dd($user);
+
+
         return redirect()->route('users.index');
     }
 

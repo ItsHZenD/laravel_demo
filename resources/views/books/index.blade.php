@@ -68,7 +68,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    {{ $data->links() }}
+                    {{ $data->withQueryString()->links() }}
                 </div>
             </div>
         </div>

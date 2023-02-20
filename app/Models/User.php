@@ -32,4 +32,8 @@ class User extends Model
     public function getYearCreatedAtAttribute($value){
         return  $this->created_at->format('d-m-Y');
     }
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
 }
