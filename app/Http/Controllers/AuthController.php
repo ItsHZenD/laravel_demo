@@ -53,16 +53,18 @@ class AuthController extends Controller
     }
     public function processRegister(ProcessRegisterRequest $request)
     {
-        $user = new User();
-        $user->fill($request->except([
-            '_token',
-            'password',
-        ]));
-        $user->fill([
-            'password' => Hash::make($request->get('password'))
-        ]);
-        $user->save();
+        // $user = new User();
+        // $user->fill($request->except([
+        //     '_token',
+        //     'password',
+        // ]));
+        // $user->fill([
+        //     'password' => Hash::make($request->get('password'))
+        // ]);
+        // $user->save();
 
+            $request['password'] = Hash::make($request->get('password'));
+            User::query()->create($request->all());
 
         // $user = User::query()
         //     ->create([
@@ -77,14 +79,7 @@ class AuthController extends Controller
         //     ]);
         // dd($request->all());
 
-        // $user = User::query()->create([
-            // $request->except([
-            //     '_token',
-            //     'password',
-            // ]),
-            // 'password' => Hash::make($request->get('password')),
-        // ]);
-        // dd($user);
+
 
 
         return redirect()->route('users.index');
